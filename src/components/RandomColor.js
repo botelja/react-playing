@@ -1,7 +1,6 @@
 import React from 'react'
 
 function RandomColor({color, handleClick, colors}) {
-
     return (
         <div>
            <p 
@@ -10,7 +9,11 @@ function RandomColor({color, handleClick, colors}) {
             >
                 Hello World
             </p>
-
+            { colors.length > 0 ?
+                <p>previous text colors:</p>
+                :
+                ''
+            }
             <ul>
                 {colors.map(single => (
                     <li style={{color: `#${single}`}} key={single}>{single}</li>
