@@ -4,33 +4,27 @@ import RandomColor from './components/RandomColor';
 import './App.css';
 
 function App() {
-  const [color, setColor] = useState([])
-  const [counter, setCounter] = useState(0)
- 
 
+  const [color, setColor] = useState('')
+  const [counter, setCounter] = useState(0)
+  const [colors, setColors] = useState([])
+ 
   useEffect(() => {
 
-    
     const fetchData = async () => {
       const result = await fetch('http://www.colr.org/json/color/random')
       const data = await result.json()
-      setColor(data.new_color)
-      
-      console.log('Call fetch')
+      setColor(data.new_color)     
     }
 
-    fetchData()
-    
+    fetchData() 
     
   }, [counter])
 
-
   const handleClick = () => {
+    setColors([...colors, color])
     setCounter(counter + 1)
-    console.log('Click')
   }
-
-  
  
   return (
     <div className="App">
@@ -39,6 +33,7 @@ function App() {
         <RandomColor 
           color={color}
           handleClick={handleClick}
+          colors={colors}
         />
         <a
           className="App-link"

@@ -1,8 +1,6 @@
 import React from 'react'
 
-function RandomColor({color, handleClick}) {
-
-    console.log(color)
+function RandomColor({color, handleClick, colors}) {
 
     return (
         <div>
@@ -10,8 +8,14 @@ function RandomColor({color, handleClick}) {
             style={{color: `#${color}`}}
             onClick={handleClick}
             >
-                Hello World {color}
-            </p> 
+                Hello World
+            </p>
+
+            <ul>
+                {colors.map(single => (
+                    <li style={{color: `#${single}`}} key={single}>{single}</li>
+                ))}
+            </ul> 
         </div>
     )
 }
